@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CL-MOTO – Adventure & More</title>
+
+    <meta name="description"
+          content="CL-MOTO – Entdecke Motorrad-, Adventure- und Outdoor-Ausrüstung sowie interessante Angebote.">
+
+    <style>
+        :root {
+            --blue: #1455c0;
+            --yellow: #f5c400;
+            --green: #38a832;
+            --dark: #171b22;
+            --light: #f4f6f8;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .logo .cl {
+            color: #3984ff;
+        }
+
+        .logo .moto {
+            color: var(--yellow);
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: white;
+            margin-top: -5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: var(--yellow);
+        }
+
+        .hero {
+            min-height: 440px;
+            padding: 80px 7%;
+            color: white;
+            background:
+                linear-gradient(110deg,
+                    rgba(12, 20, 35, 0.96),
+                    rgba(12, 20, 35, 0.68)),
+                linear-gradient(135deg,
+                    #173c6b,
+                    #253b2d);
+
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero-label {
+            color: var(--yellow);
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--yellow);
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            color: #e1e5eb;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 25px;
+            background: var(--yellow);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background: #ffda39;
+        }
+
+        section {
+            padding: 65px 7%;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #68717e;
+            margin-bottom: 30px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 28px 22px;
+            border-radius: 9px;
+            border-bottom: 4px solid var(--blue);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .category h3 {
+            margin-bottom: 8px;
+            font-size: 19px;
+        }
+
+        .category p {
+            color: #68717e;
+            font-size: 14px;
+        }
+
+        .deals-section {
+            background: #e9edf2;
+        }
+
+        .deal-placeholder {
+            background: white;
+            border-radius: 9px;
+            padding: 35px;
+            border-left: 5px solid var(--green);
+        }
+
+        .deal-placeholder h3 {
+            margin-bottom: 10px;
+        }
+
+        .deal-placeholder p {
+            color: #68717e;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+        }
+
+        .about-content p {
+            margin-top: 15px;
+            color: #515b68;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 35px 7%;
+            text-align: center;
+        }
+
+        footer p {
+            color: #b8c0cc;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .inventory-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 20px; }
+        .inventory-card { background: white; padding: 22px; border-radius: 9px; border-bottom: 3px solid var(--blue); }
+        .inventory-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .inventory-card p { font-size: 14px; color: #68717e; }
+        .inventory-note { margin-top: 18px; font-size: 14px; color: #515b68; }
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                gap: 14px;
+            }
+
+            .hero {
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <div class="logo">
+                <span class="cl">CL</span><span class="moto">MOTO</span>
+            </div>
+            <div class="logo-subtitle">ADVENTURE & MORE</div>
+        </div>
+
+        <nav>
+            <a href="#start">Startseite</a>
+            <a href="#kategorien">Kategorien</a>
+            <a href="#angebote">Angebote</a>
+            <a href="#ueber-uns">Über uns</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero" id="start">
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    CL-MOTO · ADVENTURE & MORE
+                </div>
+
+                <h1>
+                    Bereit für dein
+                    nächstes <span>Abenteuer?</span>
+                </h1>
+
+                <p>
+                    Entdecke Motorrad-, Adventure- und
+                    Outdoor-Ausrüstung. Wir suchen interessante
+                    Produkte und attraktive Angebote für dich.
+                </p>
+
+                <a href="#kategorien" class="button">
+                    Sortiment entdecken
+                </a>
+
+            </div>
+        </section>
+
+        <section id="kategorien">
+
+            <h2 class="section-title">
+                Unsere Kategorien
+            </h2>
+
+            <p class="section-description">
+                Der Start unseres Sortiments – weitere
+                Adventure- und Outdoor-Bereiche folgen.
+            </p>
+
+            <div class="categories">
+
+                <div class="category">
+                    <div class="category-icon">🪖</div>
+                    <h3>Motorradhelme</h3>
+                    <p>Integral-, Klapp-, Jet- und Adventure-Helme.</p>
+                </div>
+
+                <div class="category">
+                    <div class="category-icon">🧤</div>
+                    <h3>Motorradhandschuhe</h3>
+                    <p>Sommer-, Winter-, Sport- und Touringhandschuhe.</p>
+                </div>
+
+                <div class="category">
+                    <div class="category-icon">🧥</div>
+                    <h3>Motorradjacken</h3>
+                    <p>Leder-, Textil-, Sommer- und Winterjacken.</p>
+                </div>
+
+                <div class="category">
+                    <div class="category-icon">🥾</div>
+                    <h3>Motorradstiefel</h3>
+                    <p>Sport-, Touring-, Adventure- und Endurostiefel.</p>
+                </div>
+
+                <div class="category">
+                    <div class="category-icon">👖</div>
+                    <h3>Motorradhosen</h3>
+                    <p>Lederhosen, Textilhosen und Motorradjeans.</p>
+                </div>
+
+                <div class="category">
+                    <div class="category-icon">🏍️</div>
+                    <h3>Motorradkombis</h3>
+                    <p>Ein- und zweiteilige Leder- und Textilkombis.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="deals-section" id="angebote">
+
+            <h2 class="section-title">
+                Angebote in Vorbereitung
+            </h2>
+
+            <p class="section-description">
+                Hier werden später automatisch erkannte
+                und geprüfte Angebote angezeigt.
+            </p>
+
+            <div class="deal-placeholder">
+
+                <h3>Unser Deal-Radar wird vorbereitet</h3>
+
+                <p>
+                    Wir arbeiten daran, interessante Angebote
+                    zu finden, Preise zu vergleichen und echte
+                    Preisvorteile sichtbar zu machen.
+                    Bald findest du hier unsere ersten Deals.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="about" id="ueber-uns">
+
+            <div class="about-content">
+
+                <h2 class="section-title">
+                    CL-MOTO – Adventure & More
+                </h2>
+
+                <p>
+                    Unsere Leidenschaft gilt Motorrädern,
+                    Abenteuer und hochwertiger Ausrüstung.
+                </p>
+
+                <p>
+                    Wir möchten interessante Produkte,
+                    Preisentwicklungen und attraktive Angebote
+                    übersichtlich zusammenführen.
+                </p>
+
+                <p>
+                    Neben dem Motorradbereich sollen künftig
+                    auch Camping, Outdoor und Fahrräder
+                    Teil von CL-MOTO werden.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="logo">
+            <span class="cl">CL</span><span class="moto">MOTO</span>
+        </div>
+
+        <p>ADVENTURE & MORE</p>
+
+        <p>
+            © 2026 CL-MOTO – Adventure & More
+        </p>
+
+        <p>
+            Impressum und Datenschutz werden vor
+            der öffentlichen Freischaltung ergänzt.
+        </p>
+
+    </footer>
+
+</body>
+</html>
